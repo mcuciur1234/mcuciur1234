@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o4PHdld26JMCbMOitH0UDQbNDj80B7RiV1v7FCbVlaMFh+eC4+QNubZO+ogIRVeCubklUQzVk2bZc30u59f+Lw==",
+  "dgSpecHash": "oWOXIcQQJzItSszJdlv2Yrp1B5hWfdQtOAgQvh288+brUVKnNSrFuNJcOx81bPR74GiSMv4BbF8XLSpVRtGIKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mcuciur\\Documents\\UiPath\\NewBlankTask154\\.local\\",
+  "projectFilePath": "C:\\Users\\mcuciur\\Documents\\UiPath\\.repositories\\MyRepo3\\TestFolder1\\NewBlankTask154\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\mcuciur\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\mcuciur\\.nuget\\packages\\aforge.imaging\\2.2.5\\aforge.imaging.2.2.5.nupkg.sha512",

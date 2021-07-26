@@ -6774,9 +6774,9 @@
     "restore": {
       "projectUniqueName": "NewBlankTask154",
       "projectName": "NewBlankTask154",
-      "projectPath": "C:\\Users\\mcuciur\\Documents\\UiPath\\NewBlankTask154\\.local",
+      "projectPath": "C:\\Users\\mcuciur\\Documents\\UiPath\\.repositories\\MyRepo3\\TestFolder1\\NewBlankTask154\\.local",
       "packagesPath": "C:\\Users\\mcuciur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mcuciur\\Documents\\UiPath\\NewBlankTask154\\.local"
+      "outputPath": "C:\\Users\\mcuciur\\Documents\\UiPath\\.repositories\\MyRepo3\\TestFolder1\\NewBlankTask154\\.local"
     },
     "frameworks": {
       "net461": {
