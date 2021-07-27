@@ -95,7 +95,6 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:InputDialog Label="{x:Null}" Options="{x:Null}" OptionsString="{x:Null}" Result="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="468,237" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="468,58" sap2010:WorkflowViewState.IdRef="MessageBox_2" />
     <uga:AddNewSheet Columns="{x:Null}" ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" PositionIndex="{x:Null}" Rows="{x:Null}" SpreadsheetId="{x:Null}" AuthScopesInvalid="False" DisplayName="Add New Sheet" sap:VirtualizedContainerService.HintSize="468,88" sap2010:WorkflowViewState.IdRef="AddNewSheet_1" SheetName="NewSheet" />
     <ui:InputDialog Label="{x:Null}" Options="{x:Null}" OptionsString="{x:Null}" Result="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="468,237" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" />
     <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" WorkbookPath="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="468,352" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1">
