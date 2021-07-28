@@ -95,7 +95,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="468,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="test" />
     <Assign DisplayName="Save For Later" sap:VirtualizedContainerService.HintSize="468,81" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="ue:ExcelValue">[Saved.Values(Of UiPath.Excel.ExcelValue)("To from Save For Later")]</OutArgument>
