@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="574,531" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:uasb="clr-namespace:UiPath.Activities.System.Binding;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="574,449" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:uasb="clr-namespace:UiPath.Activities.System.Binding;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
       <x:String>System.Activities</x:String>
@@ -57,7 +57,7 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <ueab:SequenceX sap:VirtualizedContainerService.HintSize="454,466" sap2010:WorkflowViewState.IdRef="SequenceX_1">
+  <ueab:SequenceX sap:VirtualizedContainerService.HintSize="400,151" sap2010:WorkflowViewState.IdRef="SequenceX_1">
     <ueab:SequenceX.Variables>
       <Variable x:TypeArguments="ue:IWorkbookQuickHandle" Default="[new WorkbookQuickHandle(workbookPath:=&quot;Project_Notebook.xlsx&quot;,visible:=True,autoSave:=False,createNew:=True,readOnly:=False,isWorkspace:=True)]" Name="Notes" />
       <Variable x:TypeArguments="uasb:BindingsRepository" Default="[new UiPath.Activities.System.Binding.BindingsRepository()]" Name="Saved" />
@@ -67,24 +67,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: TestUiAutomation" sap:VirtualizedContainerService.HintSize="412,376" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" Version="V1">
-      <uix:NApplicationCard.Body>
-        <ActivityAction x:TypeArguments="x:Object">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,82" sap2010:WorkflowViewState.IdRef="Sequence_1">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </Sequence>
-        </ActivityAction>
-      </uix:NApplicationCard.Body>
-      <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp FilePath="C:\Windows\explorer.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOXSURBVFhH7ZVZT1NRFIUx0Qff9J/wE/wpxqggIIiCIEMZ1YgDakBUUFARUVTAmBgSfTNxRFEmAaGUGUopM21pu1z7nHOpTXyQ9sYHw052bofknG+vvfa+CTuxE3+K4GQDvF/SsdiZiqWvaVjuSsfKtxNY6z6J9d4sbPSfhm8gF/6hfAR+FmJzuAghZylCrnKExs57zTGxB9xPEZppxnJ3Lha/pGL563ECZGC1OxNrPaew0ZcN348c+AfzEBgqIIADQWcJQqNlCLvOwRwTe8DdAsy3Iexuw2qfQ6vwLR2r36lCj1bB94MqDOYSIJ8AhQiOFBOglABn7QB4ArgfE6IV8HZgfbCCbdAqrFGFdUuFAa3CJtsQHClSKoRHy+0A4OVzzcwmQrQT4g38Y7UEoArdJwhwkgBaBf/gGQLkI6jaUEyAMjsA5PJHGkBBPCfEa6XC6netwkYvVejPhp9mDAzlEUCrIG0wx8QeunoL4CGT3xc6lBdEhTVRoZcqCADNKACbPwsMQIkdAHK5AZht1E/PKyxxIlaMCltt4EgGrDaMODiOxXYASOUCwOpn7zP59LzkSKZwJNMIQBV62Ia+UwTIRkDaoAAK7QSQ6h8w7wEzfM6/4GJK0W2gClYbfP1ZW20IDhcQoMguAFP9TD2TEO5WeD8fi26D+IBt8HMaVBsEgG0wx8QeW9XPNADTd5l8up9h4VOyUmG5i20QM5o2RADy7QKg8azqp+s0xFwLAZKwSBXEB9Y0aADtAzFiiD4wx8QeUdVP1WqI2WZ4PiZF2mABKB8IQA42zT6As+iAOSq2iKp+6raGmG2C58NRAiQTIEUb0fhAjBgBkH3g8BIi0Ry3/dDV39EXT91k3iJQIzzvj8ArbbB8oPZBpp4EAogPrEkIuUpjfy1j2qqeF0/W6OQkzBNA+aBT+yAaQBvRAgi74ljJUdVPVgMTN/i5Hm4BoA8EQPaBLKR1vhd8v02CBnAQII6VHFX9RJXOqToCHMYCfaABUg2ANQkGQE1CvABivElT/fh1BRIer8Hcu8PKiBbAiqzkKIDcCEA8LyVdPWWXygWALVjozNgCUJMgAFG7wE4AqX7CVD9+jVmF6beHIgr8PcBu5i516HYiUj0vH6tUIDEC7GfuYW4PAuPV9br6qwS4rCDMX/8u4Ko8iLErvPySgjA//9vAREUiXBe8cF0UgL3M7csZb8BZuQ/OinZ+3McUgP8pEhJ+AbVnNhppJunEAAAAAElFTkSuQmCC" InformativeScreenshot="901c13933d97e0eb43613ec06f429c7d.png" Selector="&lt;wnd app='explorer.exe' cls='CabinetWClass' title='TestUiAutomation'/&gt;" />
-      </uix:NApplicationCard.TargetApp>
-    </uix:NApplicationCard>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="358,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
   </ueab:SequenceX>
 </Activity>
