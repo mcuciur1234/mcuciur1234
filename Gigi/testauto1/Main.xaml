@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="470,371" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:uasb="clr-namespace:UiPath.Activities.System.Binding;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1051,629" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:uasb="clr-namespace:UiPath.Activities.System.Binding;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
       <x:String>System.Activities</x:String>
@@ -54,12 +54,37 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Presentations</AssemblyReference>
       <AssemblyReference>UiPath.Presentations.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <ueab:SequenceX>
+  <ueab:SequenceX sap:VirtualizedContainerService.HintSize="454,466" sap2010:WorkflowViewState.IdRef="SequenceX_1">
     <ueab:SequenceX.Variables>
       <Variable x:TypeArguments="ue:IWorkbookQuickHandle" Default="[new WorkbookQuickHandle(workbookPath:=&quot;Project_Notebook.xlsx&quot;,visible:=True,autoSave:=False,createNew:=True,readOnly:=False,isWorkspace:=True)]" Name="Notes" />
       <Variable x:TypeArguments="uasb:BindingsRepository" Default="[new UiPath.Activities.System.Binding.BindingsRepository()]" Name="Saved" />
     </ueab:SequenceX.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: Studio - Microsoft Visual Studio" sap:VirtualizedContainerService.HintSize="412,376" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,82" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp FilePath="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\devenv.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATXSURBVFhHvZZZTxtXFMfnI/ARUAKJ+lJZVQ3GxARVjdoECANhsSG0fqoUVS0uq1jMGIxrMIttwBgwEVFVKU8VlcEYbPCwmS3QIelbXuYjTMBUfTw9dxib8TYqIuRIP92R8Z3ff869cw11G8WUsjmTNRz724v3fNT7z8K+999c6U+fpmylO2x/ySb0aDdgx3MhsvupggyWbr2yPdyCAQzQVbQOO1MYIA4J4rnFINaSLcsgigdLMIDuMsA2ijOBgVj2YwaxlrAWK8rj9OtYDBCG7UkUprAljTuTF5w0/WY1oGNNCD71FcyDCHRqQrA1gUIFpFtQ1IKRy5l//nez18hdqy2MjqXJ06bSV7yBAdZg032hCDXXwKleNr5zzje+E+Yb3gLBZ+BM0v0Vi9GyKouOFSy6CKRixgDtmlXYdKFIAepH1Wve+igMPiKWo+cskidj4bueiyKeebCB7b7Cgq0no1m7Du2Fq8A6Y4pQ392bB0OeFxzl2zBneJuET3/KevXpS0LkTAa5nF5tGNqLAlORcRQpQH1/7yU05fug6f4cjFZGYVZ/eokhAS8PQU45XF++r3gd1zk7vZowQ74fGYuBEhhgHkgXGvNnwfiZD2b0pzxCxgTe+lNhto6jTaWLOT3aEEeezoySLAjmoshDMS3WxmgMlMAl8GEA7ADSkO8F8rQkhLeeQ3Ey9idRrq1gBd/vNTxmQ9BbHE4CP+M7NcGkJdsYQZECGGBODEDGJoRMIiGm6zkBgVRs3+xAm2YFOguD0C0FEcMUhVnSIdEqq3VHDJSgmvJRLEOaR3lqOZWnjhMQ8NT9JYMDV/Ub3GBB3OWkG6ukI05pWlqFh2OgBPUc116ONE8sT+2JcQqlIrXJo6sKQ2hJiNVm6esZKzyEIgUwwAyKr5DmidWiDhj7vorAJEqzMVFzonhohewxUIJqxI0XpyF/OhGgWx1SteNam9RLwHzNElFW3DUnWQ+t0K/nEGctcY1y6ZpqyJuGOIa7HjEA2cm4yYQOTRDacJ2bv/RD/6NNIhKRieXjopPeTzu01mwoVgADeFDuQfkU1N1x4w8IyjVBnsg7sAOkC62FAfgZQ9jLopz72TEQXBlwVx/zqSFWB89BCcqQNwX6vEmUu6A+zw0dhSs82d1JFKwIpgI/7aS5HFf1MedEGYFI49fO6sRnAo605E8PYJWQrqn6uxNQi/Jnd8bhpy/+QGEA2x4QRwnepFlMPBUJgTLeia9iNsaRseo34r4IoiQ4kILsM4rIq3Id8EL1WhQns5zxcLHTXO541TE/jq9iKmPSOFJ5CINle86V/nNQgmq67xN++Px3aC1YTqJFvZz1cCFFQoxhiLGqI5Sm46g8AuuTvTRhKpRJFczF932hpWAJ4rSqA4qHS7wcdFQ1Sh8JCKQy/PQQBh5HIWA5V0S6FSUGMan9xl/U/sQv2f+pUfqQHkFhKkMYoJ8EYFCkgHSbm9VwxYHJgWsux15xAJbHu7Dcdy5xlhHpFjevEfqQIW2PY6/YB+bbXVgynynBS9M/TqGYGXp6AHbEVr4PfSRAL4oy8oFd7BTSTs4bl718/xVpv7VsD8z4v4O/5yyFD6zfHLvWPrt22coPWDEAdsDfjdJLFvxdtyyOF0OzOfbKo4UZ43v+z64zZ/ZWU9R/5o+npwCuo3YAAAAASUVORK5CYII=" InformativeScreenshot="a7b98cc0dcd62f2643bb690e2b902317.png" Selector="&lt;wnd app='devenv.exe' cls='HwndWrapper*' title='Studio - Microsoft Visual Studio'/&gt;" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
   </ueab:SequenceX>
 </Activity>
