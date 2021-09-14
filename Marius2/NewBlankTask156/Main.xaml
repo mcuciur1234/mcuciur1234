@@ -92,7 +92,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="412,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
     <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="412,58" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[string.Format(&quot;debug&quot;)]" />
     <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" KeyPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" AuthenticationType="OAuthClientID" CredentialID="406877477771-c17sjod33eekrru63ls2684uc1k6sb94.apps.googleusercontent.com" CredentialSecret="-7dooJtmckD_V58eTxo0dctx" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="412,542" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyType="JSON" OAuthClient="UiPath" Password="ParolaTest1!" Services="Unselected" UserEmail="test.marius.x@gmail.com">
       <uga:GSuiteApplicationScope.AuthenticationScopes>
