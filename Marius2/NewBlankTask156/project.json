@@ -6,9 +6,9 @@
     "UiPath.ComplexScenarios.Activities": "[1.1.3]",
     "UiPath.Excel.Activities": "[2.9.5]",
     "UiPath.GSuite.Activities": "[1.13.0-beta.1902224]",
-    "UiPath.Mail.Activities": "[1.12.0-beta.1903465]",
+    "UiPath.Mail.Activities": "[1.12.0-beta.1907973]",
     "UiPath.Presentations.Activities": "[1.0.2]",
-    "UiPath.System.Activities": "[21.5.0-alpha.1580993]",
+    "UiPath.System.Activities": "[21.2.0-dev]",
     "UiPath.UIAutomation.Activities": "[20.10.7]",
     "UiPath.Word.Activities": "[1.5.3]"
   },
