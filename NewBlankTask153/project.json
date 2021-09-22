@@ -4,7 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.ComplexScenarios.Activities": "[1.0.7340.17913]",
-    "UiPath.Excel.Activities": "[2.8.7339.29091]",
+    "UiPath.Excel.Activities": "[2.11.265-dev.693]",
     "UiPath.GSuite.Activities": "[1.12.0-alpha.1672578]",
     "UiPath.Mail.Activities": "[1.11.1-alpha.1680694]",
     "UiPath.Presentations.Activities": "[0.1.1.0]",
@@ -21,6 +21,7 @@
     "exceptionHandlerWorkflow": "GlobalHandlerX.xaml",
     "autoDispose": false,
     "isPausable": true,
+    "isAttended": false,
     "requiresUserInteraction": true,
     "supportsPersistence": false,
     "excludedLoggedData": [
