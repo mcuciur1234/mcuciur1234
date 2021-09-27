@@ -4,12 +4,12 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.ComplexScenarios.Activities": "[1.0.7340.17913]",
-    "UiPath.Excel.Activities": "[2.11.265-dev.693]",
+    "UiPath.Excel.Activities": "[2.11.265-dev.926]",
     "UiPath.GSuite.Activities": "[1.12.0-alpha.1672578]",
     "UiPath.Mail.Activities": "[1.11.1-alpha.1680694]",
     "UiPath.Presentations.Activities": "[0.1.1.0]",
     "UiPath.System.Activities": "[21.2.0-dev]",
-    "UiPath.UIAutomation.Activities": "[20.2.7340.17909]",
+    "UiPath.UIAutomation.Activities": "[21.12.0-alpha.1924561]",
     "UiPath.Word.Activities": "[1.4.0]"
   },
   "webServices": [],
