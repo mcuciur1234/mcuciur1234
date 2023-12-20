@@ -5,7 +5,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.ComplexScenarios.Activities": "[1.5.0]",
-    "UiPath.Excel.Activities": "[2.22.2-beta.4480153]",
+    "UiPath.Excel.Activities": "[2.23.0-preview]",
     "UiPath.Mail.Activities": "[1.21.1]",
     "UiPath.Presentations.Activities": "[1.12.2-beta.4479822]",
     "UiPath.System.Activities": "[23.10.1-beta.4478503]",
