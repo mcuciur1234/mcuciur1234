@@ -12,6 +12,11 @@
       "Type": "ProcessOrchestration",
       "ProjectRelativePath": "Agentic Process/project.uiproj",
       "Id": "4c2e27eb-4b61-43db-a8fb-8151ba404e12"
+    },
+    {
+      "Type": "Process",
+      "ProjectRelativePath": "BlankProcess184/project.uiproj",
+      "Id": "59abaa98-6d95-4a5a-b9ee-d2a326988260"
     }
   ]
 }

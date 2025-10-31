@@ -229,6 +229,84 @@
       },
       "locks": [],
       "key": "Project_1:1.0.23"
+    },
+    {
+      "name": "BlankProcess184",
+      "kind": "process",
+      "type": "process",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "projectKey": "59abaa98-6d95-4a5a-b9ee-d2a326988260",
+      "dependencies": [
+        {
+          "name": "BlankProcess184",
+          "kind": "package"
+        }
+      ],
+      "runtimeDependencies": [],
+      "files": [],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "entryPointUniqueId": null,
+        "inputArgumentsSchema": null,
+        "inputArgumentsSchemaV2": null,
+        "type": "Process",
+        "name": "BlankProcess184",
+        "description": null,
+        "package": {
+          "key": "185df4f1-c6ef-48a4-938e-5f34a140597d"
+        },
+        "packageName": null,
+        "packageVersion": null,
+        "entryPointName": null,
+        "inputArguments": "{}",
+        "jobPriority": "Medium",
+        "hiddenForAttendedUser": false,
+        "alwaysRunning": false,
+        "autoStartProcess": false,
+        "jobRecording": "Disabled",
+        "targetFrameworkValue": "Portable",
+        "duration": 40,
+        "frequency": 500,
+        "quality": 100,
+        "remoteControlAccess": "None",
+        "retentionAction": "Delete",
+        "retentionPeriod": 30,
+        "retentionBucketRef": null,
+        "staleRetentionAction": "Delete",
+        "staleRetentionPeriod": 180,
+        "staleRetentionBucketRef": null,
+        "entryPoints": null,
+        "connections": null,
+        "tags": []
+      },
+      "locks": [],
+      "key": "72bdb2f5-e255-4542-87cb-640b10779605"
+    },
+    {
+      "name": "BlankProcess184",
+      "kind": "package",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "projectKey": "59abaa98-6d95-4a5a-b9ee-d2a326988260",
+      "dependencies": [],
+      "runtimeDependencies": [],
+      "files": [],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "fileName": null,
+        "fileReference": null,
+        "name": "BlankProcess184",
+        "description": null
+      },
+      "locks": [],
+      "key": "185df4f1-c6ef-48a4-938e-5f34a140597d"
     }
   ],
   "folders": [
