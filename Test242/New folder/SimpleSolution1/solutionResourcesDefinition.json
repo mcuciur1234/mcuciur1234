@@ -1,0 +1,252 @@
+{
+  "docVersion": "1.0.0",
+  "resources": [
+    {
+      "name": "Agent",
+      "kind": "process",
+      "type": "agent",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "projectKey": "9170388a-295e-437d-afbc-580625ee0f72",
+      "dependencies": [
+        {
+          "name": "Agent",
+          "kind": "package"
+        }
+      ],
+      "runtimeDependencies": [],
+      "files": [],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "entryPointUniqueId": null,
+        "inputArgumentsSchema": null,
+        "inputArgumentsSchemaV2": null,
+        "type": "Agent",
+        "name": "Agent",
+        "description": null,
+        "package": {
+          "key": "67c337de-7871-4cd1-ad4b-10525e48cde8"
+        },
+        "packageName": "Simple_Solution_1.agent.Agent",
+        "packageVersion": null,
+        "entryPointName": null,
+        "inputArguments": "{}",
+        "hiddenForAttendedUser": false,
+        "alwaysRunning": false,
+        "autoStartProcess": false,
+        "targetFrameworkValue": "Portable",
+        "agentMemory": false,
+        "retentionAction": "Delete",
+        "retentionPeriod": 30,
+        "retentionBucketRef": null,
+        "staleRetentionAction": "Delete",
+        "staleRetentionPeriod": 180,
+        "staleRetentionBucketRef": null,
+        "entryPoints": null,
+        "connections": null,
+        "tags": []
+      },
+      "locks": [],
+      "key": "1cc89ec6-c4aa-49a6-86ce-15e21cbc8f74"
+    },
+    {
+      "name": "Agent",
+      "kind": "package",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "projectKey": "9170388a-295e-437d-afbc-580625ee0f72",
+      "dependencies": [],
+      "runtimeDependencies": [],
+      "files": [],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "fileName": null,
+        "fileReference": null,
+        "name": "Agent",
+        "description": null
+      },
+      "locks": [],
+      "key": "67c337de-7871-4cd1-ad4b-10525e48cde8"
+    },
+    {
+      "name": "Agentic Process",
+      "kind": "process",
+      "type": "processOrchestration",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "projectKey": "4c2e27eb-4b61-43db-a8fb-8151ba404e12",
+      "dependencies": [
+        {
+          "name": "Agentic Process",
+          "kind": "package"
+        }
+      ],
+      "runtimeDependencies": [],
+      "files": [],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "entryPointUniqueId": null,
+        "inputArgumentsSchema": null,
+        "inputArgumentsSchemaV2": null,
+        "type": "ProcessOrchestration",
+        "name": "Agentic Process",
+        "description": null,
+        "package": {
+          "key": "9137463b-0d55-4b13-8315-70bd19665408"
+        },
+        "packageName": "Simple_Solution_1.processOrchestration.Agentic.Process",
+        "packageVersion": null,
+        "entryPointName": null,
+        "inputArguments": "{}",
+        "hiddenForAttendedUser": false,
+        "alwaysRunning": false,
+        "autoStartProcess": false,
+        "targetFrameworkValue": "Portable",
+        "retentionAction": "Delete",
+        "retentionPeriod": 30,
+        "retentionBucketRef": null,
+        "staleRetentionAction": "Delete",
+        "staleRetentionPeriod": 180,
+        "staleRetentionBucketRef": null,
+        "entryPoints": null,
+        "connections": null,
+        "tags": []
+      },
+      "locks": [],
+      "key": "77526570-5225-4d8c-8c0a-a7dafba53233"
+    },
+    {
+      "name": "Agentic Process",
+      "kind": "package",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "projectKey": "4c2e27eb-4b61-43db-a8fb-8151ba404e12",
+      "dependencies": [],
+      "runtimeDependencies": [],
+      "files": [],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "fileName": null,
+        "fileReference": null,
+        "name": "Agentic Process",
+        "description": null
+      },
+      "locks": [],
+      "key": "9137463b-0d55-4b13-8315-70bd19665408"
+    },
+    {
+      "name": "Project_1",
+      "kind": "process",
+      "type": "process",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "dependencies": [
+        {
+          "name": "Project_1",
+          "kind": "Package"
+        }
+      ],
+      "runtimeDependencies": [],
+      "files": [],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "type": "Process",
+        "jobPriority": "Medium",
+        "jobRecording": "Disabled",
+        "duration": 40,
+        "frequency": 500,
+        "quality": 100,
+        "remoteControlAccess": "None",
+        "name": "Project_1",
+        "package": {
+          "name": "Project_1",
+          "key": "Project_1:1.0.23"
+        },
+        "packageName": "Project_1",
+        "packageVersion": "1.0.23",
+        "entryPointUniqueId": "dcaa3ecd-4526-4d0a-b7bb-c09a25a2cb97",
+        "entryPointName": "Main.xaml",
+        "inputArguments": null,
+        "inputArgumentsSchema": null,
+        "outputArgumentsSchema": null,
+        "inputArgumentsSchemaV2": null,
+        "outputArgumentsSchemaV2": null,
+        "hiddenForAttendedUser": false,
+        "alwaysRunning": false,
+        "autoStartProcess": false,
+        "targetFrameworkValue": "Windows",
+        "retentionAction": "Delete",
+        "retentionPeriod": 30,
+        "retentionBucketRef": null,
+        "staleRetentionAction": "Delete",
+        "staleRetentionPeriod": 180,
+        "staleRetentionBucketRef": null,
+        "entryPoints": "[{\u0022UniqueId\u0022:\u0022dcaa3ecd-4526-4d0a-b7bb-c09a25a2cb97\u0022,\u0022Path\u0022:\u0022Main.xaml\u0022,\u0022DisplayName\u0022:null,\u0022InputArguments\u0022:null,\u0022OutputArguments\u0022:null,\u0022DataVariation\u0022:null,\u0022Id\u0022:9945513}]",
+        "connections": null,
+        "tags": [],
+        "description": "Blank Process"
+      },
+      "locks": [],
+      "key": "fc79bd72-4162-4498-883d-0174280da5e7"
+    },
+    {
+      "name": "Project_1",
+      "kind": "package",
+      "apiVersion": "orchestrator.uipath.com/v1",
+      "dependencies": [],
+      "runtimeDependencies": [],
+      "files": [
+        {
+          "fileName": "Project_1.1.0.23.nupkg",
+          "kind": "Package"
+        }
+      ],
+      "folders": [
+        {
+          "fullyQualifiedName": "Solution Folder"
+        }
+      ],
+      "spec": {
+        "fileName": "Project_1.1.0.23.nupkg",
+        "fileReference": "Project_1_1.0.23",
+        "name": "Project_1",
+        "description": null
+      },
+      "locks": [],
+      "key": "Project_1:1.0.23"
+    }
+  ],
+  "folders": [
+    {
+      "fullyQualifiedName": "Solution Folder",
+      "path": "156ea652-f02d-72e9-48f8-bbd4db7e2aa8",
+      "key": "156ea652-f02d-72e9-48f8-bbd4db7e2aa8"
+    }
+  ],
+  "files": [
+    {
+      "name": "Project_1.1.0.23.nupkg",
+      "kind": "Package",
+      "version": "1.0.23",
+      "url": "https://staging.uipath.com/2c77441e-0035-40af-b9b7-de2331a8e779/b551cb48-15fc-46ef-be31-bb24743a127a/orchestrator_/odata/Processes/UiPath.Server.Configuration.OData.DownloadPackage(key=\u0027Project_1:1.0.23\u0027)?feedId=91d7b5d7-6fe2-44a5-9422-b27809ea111e",
+      "key": "Project_1_1.0.23"
+    }
+  ],
+  "rootFolderKey": "156ea652-f02d-72e9-48f8-bbd4db7e2aa8",
+  "key": "19825508-4829-4521-d011-08de027e750a"
+}

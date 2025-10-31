@@ -1,0 +1,210 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  name: W11
+
+variables:
+- group: 'UiPath CLI'            # ← Library → Variable groups → UiPath CLI
+- name: HTTP_PROXY
+  value: "http://20.61.17.208:3128"
+- name: HTTPS_PROXY
+  value: "http://20.61.17.208:3129"
+- name: PACKAGE_VERSION
+  value: "1.0.$(Build.BuildId)"
+- name: NODE_EXTRA_CA_CERTS
+  value: "C:\\agent\\certs\\myCA.pem"
+
+steps:
+- checkout: self
+
+# 1) Download UiPath CLI dynamically from the feed
+- task: NuGetCommand@2
+  displayName: "Download UiPath CLI (from feed)"
+  inputs:
+    command: custom
+    arguments: >
+      install UiPath.CLI.Windows
+      -Version $(UIP_CLI_VERSION)
+      -Source https://uipath.pkgs.visualstudio.com/Public.Feeds/_packaging/UiPath-Internal/nuget/v3/index.json
+      -OutputDirectory "$(Agent.ToolsDirectory)\nupkg"
+
+# 2) Pack UiPath project and export UIP_PROJECT_NAME
+- powershell: |
+    $cli = "$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.Windows.$(UIP_CLI_VERSION)\tools\uipcli.exe"
+    if (-not (Test-Path $cli)) { Write-Error "UiPath CLI not found at $cli"; exit 1 }
+
+    # Find the first .uipx (repo-agnostic). If you want to force one, add a UIPX_PATH var and use it here.
+    $project = Get-ChildItem "$(Build.SourcesDirectory)" -Filter *.uipx -Recurse | Select-Object -First 1
+    if (-not $project) { Write-Error "No .uipx project found under $(Build.SourcesDirectory)"; exit 1 }
+
+    $projectName = [IO.Path]::GetFileNameWithoutExtension($project.Name)
+    $version = "$(PACKAGE_VERSION)"
+    $outDir = "$(Build.ArtifactStagingDirectory)"
+
+    Write-Host "Packing $projectName v$version"
+    & $cli package pack "$($project.FullName)" --output "$outDir" --version "$version"
+
+    $zip = Get-ChildItem "$outDir\*.zip" | Select-Object -First 1
+    if (-not $zip) { Write-Error "Packaging produced no ZIP."; exit 1 }
+    $newZip = Join-Path $outDir ("{0}_{1}.zip" -f $projectName,$version)
+    if ($zip.FullName -ne $newZip) {
+      Write-Host "Renaming $($zip.Name) -> $(Split-Path $newZip -Leaf)"
+      Rename-Item $zip.FullName $newZip -Force
+    }
+
+    # export project name for later steps
+    Write-Host "##vso[task.setvariable variable=UIP_PROJECT_NAME;isOutput=false]$projectName"
+    Write-Host "UIP_PROJECT_NAME=$projectName"
+  displayName: "Pack UiPath Solution"
+  env:
+    PATH: 'C:\Program Files\dotnet;$(PATH)'
+
+# 3) Upload the produced ZIP to UiPath Cloud
+- powershell: |
+    $version = "$(PACKAGE_VERSION)"
+    $expected = Join-Path "$(Build.ArtifactStagingDirectory)" ("{0}_{1}.zip" -f $env:UIP_PROJECT_NAME,$version)
+    if (Test-Path $expected) {
+      $zip = Get-Item $expected
+    } else {
+      $zip = Get-ChildItem "$(Build.ArtifactStagingDirectory)\*.zip" | Select-Object -First 1
+    }
+    if (-not $zip) { Write-Error "No ZIP to upload."; exit 1 }
+
+    $cli = "$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.Windows.$(UIP_CLI_VERSION)\tools\uipcli.exe"
+    Write-Host "Uploading: $($zip.FullName)"
+    & $cli solution upload-package "$($zip.FullName)" `
+      -U $env:UIP_URL `
+      -T $env:UIP_TENANT_NAME `
+      -A $env:UIP_ORG_NAME `
+      -I $env:UIP_APP_ID `
+      -S $env:UIP_APP_SECRET `
+      --applicationScope $env:UIP_APP_SCOPES `
+      --traceLevel $env:TRACE_LEVEL
+  displayName: "Upload UiPath Package"
+  env:
+    UIP_URL: $(UIP_URL)
+    UIP_TENANT_NAME: $(UIP_TENANT_NAME)
+    UIP_ORG_NAME: $(UIP_ORG_NAME)
+    UIP_APP_ID: $(UIP_APP_ID)
+    UIP_APP_SECRET: $(UIP_APP_SECRET)
+    UIP_APP_SCOPES: $(UIP_APP_SCOPES)
+    TRACE_LEVEL: $(TRACE_LEVEL)
+    UIP_PROJECT_NAME: $(UIP_PROJECT_NAME)
+    PATH: 'C:\Program Files\dotnet;$(PATH)'
+
+# 4) Publish the ZIP as a pipeline artifact
+- task: PublishBuildArtifacts@1
+  displayName: "Publish ZIP as Azure Artifact"
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'UiPathPackage'
+    publishLocation: 'Container'
+
+# 5) Deploy UiPath Solution (defaults DEPLOYMENT_NAME/root folder to project if not set)
+- task: PowerShell@2
+  displayName: "Deploy UiPath Solution"
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ErrorActionPreference = 'Stop'
+      function Use-OrDefault([string]$val, [string]$fallback) {
+        if ([string]::IsNullOrWhiteSpace($val) -or $val -match '^\$\(.+\)$') { return $fallback } else { return $val }
+      }
+
+      $cli = "$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.Windows.$(UIP_CLI_VERSION)\tools\uipcli.exe"
+      if (-not (Test-Path $cli)) { throw "UiPath CLI not found at $cli" }
+
+      $version = "$(PACKAGE_VERSION)"
+
+      # Prefer exported project name; fallback from zip/uipx
+      if (-not [string]::IsNullOrWhiteSpace($env:UIP_PROJECT_NAME) -and $env:UIP_PROJECT_NAME -notmatch '^\$\(.+\)$') {
+        $packageName = $env:UIP_PROJECT_NAME
+      } else {
+        $zip = Get-ChildItem -Path "$(Build.ArtifactStagingDirectory)" -Filter *.zip | Select-Object -First 1
+        if ($zip -and $zip.BaseName.EndsWith("_$version")) {
+          $packageName = $zip.BaseName.Substring(0, $zip.BaseName.Length - ($version.Length + 1))
+        } else {
+          $uipx = Get-ChildItem "$(Build.SourcesDirectory)" -Filter *.uipx -Recurse | Select-Object -First 1
+          if ($uipx) { $packageName = [IO.Path]::GetFileNameWithoutExtension($uipx.Name) } else { throw "Cannot determine package name." }
+        }
+      }
+
+      $deploymentName = Use-OrDefault $env:DEPLOYMENT_NAME $packageName
+      $rootFolder     = Use-OrDefault $env:SOLUTION_ROOT_FOLDER_NAME $packageName
+      $destFolder     = Use-OrDefault $env:DESTINATION_FOLDER ''
+      $configPath     = Use-OrDefault $env:CONFIG_PATH ''
+
+      Write-Host "Deploying '$packageName' v$version as '$deploymentName' (root '$rootFolder')"
+
+      $args = @(
+        'solution','deploy', $packageName,
+        '-v', $version,
+        '-d', $deploymentName,
+        '-r', $rootFolder,
+        '-U', $env:UIP_URL,
+        '-T', $env:UIP_TENANT_NAME,
+        '-A', $env:UIP_ORG_NAME,
+        '-I', $env:UIP_APP_ID,
+        '-S', $env:UIP_APP_SECRET,
+        '--applicationScope', $env:UIP_APP_SCOPES,
+        '--traceLevel', $env:TRACE_LEVEL
+      )
+      if ($destFolder -ne '') { $args += @('--destinationFolder', $destFolder) }
+      if ($configPath -ne '') { $args += @('--configPath', $configPath) }
+
+      & $cli @args
+  env:
+    UIP_URL: $(UIP_URL)
+    UIP_TENANT_NAME: $(UIP_TENANT_NAME)
+    UIP_ORG_NAME: $(UIP_ORG_NAME)
+    UIP_APP_ID: $(UIP_APP_ID)
+    UIP_APP_SECRET: $(UIP_APP_SECRET)
+    UIP_APP_SCOPES: $(UIP_APP_SCOPES)
+    TRACE_LEVEL: $(TRACE_LEVEL)
+    DEPLOYMENT_NAME: $(DEPLOYMENT_NAME)
+    SOLUTION_ROOT_FOLDER_NAME: $(SOLUTION_ROOT_FOLDER_NAME)
+    DESTINATION_FOLDER: $(DESTINATION_FOLDER)
+    CONFIG_PATH: $(CONFIG_PATH)
+    UIP_PROJECT_NAME: $(UIP_PROJECT_NAME)
+    PATH: 'C:\Program Files\dotnet;$(PATH)'
+
+# 6) Activate UiPath Deployment (defaults to project name if DEPLOYMENT_NAME not set)
+- task: PowerShell@2
+  displayName: "Activate UiPath Deployment"
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ErrorActionPreference = 'Stop'
+      function Use-OrDefault([string]$val, [string]$fallback) {
+        if ([string]::IsNullOrWhiteSpace($val) -or $val -match '^\$\(.+\)$') { return $fallback } else { return $val }
+      }
+
+      $cli = "$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.Windows.$(UIP_CLI_VERSION)\tools\uipcli.exe"
+      if (-not (Test-Path $cli)) { throw "UiPath CLI not found at $cli" }
+
+      $fallbackName = if ([string]::IsNullOrWhiteSpace($env:UIP_PROJECT_NAME) -or $env:UIP_PROJECT_NAME -match '^\$\(.+\)$') { 'DefaultDeployment' } else { $env:UIP_PROJECT_NAME }
+      $deploymentName = Use-OrDefault $env:DEPLOYMENT_NAME $fallbackName
+
+      Write-Host "Activating deployment '$deploymentName'..."
+      & $cli solution deploy-activate $deploymentName `
+        -U $env:UIP_URL `
+        -T $env:UIP_TENANT_NAME `
+        -A $env:UIP_ORG_NAME `
+        -I $env:UIP_APP_ID `
+        -S $env:UIP_APP_SECRET `
+        --applicationScope $env:UIP_APP_SCOPES `
+        --traceLevel $env:TRACE_LEVEL
+  env:
+    UIP_URL: $(UIP_URL)
+    UIP_TENANT_NAME: $(UIP_TENANT_NAME)
+    UIP_ORG_NAME: $(UIP_ORG_NAME)
+    UIP_APP_ID: $(UIP_APP_ID)
+    UIP_APP_SECRET: $(UIP_APP_SECRET)
+    UIP_APP_SCOPES: $(UIP_APP_SCOPES)
+    TRACE_LEVEL: $(TRACE_LEVEL)
+    DEPLOYMENT_NAME: $(DEPLOYMENT_NAME)
+    UIP_PROJECT_NAME: $(UIP_PROJECT_NAME)
+    PATH: 'C:\Program Files\dotnet;$(PATH)'
